@@ -39,4 +39,9 @@ export const menuItems = [
     icon: 'copy-outline',
     component: 'ModalScreen',
   },
+  {
+    name: 'Infinite Scroll',
+    icon: 'infinite',
+    component: 'InfiniteScrollScreen',
+  },
 ];
