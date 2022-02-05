@@ -24,4 +24,14 @@ export const menuItems = [
     icon: 'document-text-outline',
     component: 'TextInputScreen',
   },
+  {
+    name: 'Pull to refresh',
+    icon: 'refresh-outline',
+    component: 'PullToRefreshScreen',
+  },
+  {
+    name: 'Section List ',
+    icon: 'list-outline',
+    component: 'SectionListScreen',
+  },
 ];
