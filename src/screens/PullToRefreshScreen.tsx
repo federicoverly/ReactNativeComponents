@@ -6,7 +6,7 @@ import {HeaderTitle} from '../components/HeaderTitle';
 
 export const PullToRefreshScreen = () => {
   const [refreshing, setRefreshing] = useState(false);
-  const [data, setData] = useState<String>();
+  const [data, setData] = useState<string>();
 
   const {top} = useSafeAreaInsets();
 

@@ -1,14 +1,7 @@
 import React, {useState} from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  Image,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
 import {FadeInImage} from '../components/FadeInImage';
 import {HeaderTitle} from '../components/HeaderTitle';
-import {styles} from '../theme/AppTheme';
 
 export const InfiniteScrollScreen = () => {
   const [numbers, setNumbers] = useState([0, 1, 2, 3, 4, 5]);

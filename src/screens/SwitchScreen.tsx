@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {CustomSwitch} from '../components/CustomSwitch';
 import {HeaderTitle} from '../components/HeaderTitle';
+import {styles} from '../theme/AppTheme';
 
 export const SwitchScreen = () => {
   const [state, setState] = useState({
@@ -16,35 +17,37 @@ export const SwitchScreen = () => {
   };
 
   return (
-    <View style={{marginHorizontal: 20}}>
+    <View style={styles.globalMargin}>
       <HeaderTitle title={'Switches'} />
-      <View style={styles.switchRow}>
-        <Text style={styles.switchText}>Is active</Text>
+      <View style={screenStyles.switchRow}>
+        <Text style={screenStyles.switchText}>Is active</Text>
         <CustomSwitch
           isOn={isActive}
           onChange={value => onChange(value, 'isActive')}
         />
       </View>
-      <View style={styles.switchRow}>
-        <Text style={styles.switchText}>Is Hungry</Text>
+      <View style={screenStyles.switchRow}>
+        <Text style={screenStyles.switchText}>Is Hungry</Text>
         <CustomSwitch
           isOn={isHungry}
           onChange={value => onChange(value, 'isHungry')}
         />
       </View>
-      <View style={styles.switchRow}>
-        <Text style={styles.switchText}>Is Happy</Text>
+      <View style={screenStyles.switchRow}>
+        <Text style={screenStyles.switchText}>Is Happy</Text>
         <CustomSwitch
           isOn={isHappy}
           onChange={value => onChange(value, 'isHappy')}
         />
       </View>
-      <Text style={styles.switchText}>{JSON.stringify(state, null, 5)}</Text>
+      <Text style={screenStyles.switchText}>
+        {JSON.stringify(state, null, 5)}
+      </Text>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+const screenStyles = StyleSheet.create({
   switchRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',

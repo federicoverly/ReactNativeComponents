@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Button, View} from 'react-native';
+import {Alert, Button, StyleSheet, View} from 'react-native';
 import {HeaderTitle} from '../components/HeaderTitle';
 import {styles} from '../theme/AppTheme';
 import prompt from 'react-native-prompt-android';
@@ -59,10 +59,16 @@ export const AlertScreen = () => {
       <View>
         <Button title={'Show Alert'} onPress={showAlert} />
 
-        <View style={{height: 20}} />
+        <View style={screenStyles.separator} />
         {/* Only works on ios */}
         <Button title={'Show Prompt'} onPress={showPrompt} />
       </View>
     </View>
   );
 };
+
+const screenStyles = StyleSheet.create({
+  separator: {
+    height: 20,
+  },
+});
