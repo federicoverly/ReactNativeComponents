@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {SectionList, Text, View} from 'react-native';
 import {HeaderTitle} from '../components/HeaderTitle';
 import {ItemSeparator} from '../components/ItemSeparator';
 import {SectionListFooter} from '../components/SectionListFooter';
 import {SectionListHeader} from '../components/SectionListHeader';
 import {styles} from '../theme/AppTheme';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 interface Houses {
   house: string;
@@ -62,11 +63,16 @@ const houses: Houses[] = [
 ];
 
 export const SectionListScreen = () => {
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
   return (
     <View style={{...styles.globalMargin, flex: 1}}>
       <SectionList
         sections={houses}
-        renderItem={({item}) => <Text>{item}</Text>}
+        renderItem={({item}) => (
+          <Text style={{color: colors.card}}>{item}</Text>
+        )}
         keyExtractor={(item, index) => item + index}
         renderSectionHeader={({section}) => (
           <SectionListHeader title={section.house} />

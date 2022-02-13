@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 export const ItemSeparator = () => {
-  return <View style={styles.separator} />;
+  const {theme} = useContext(ThemeContext);
+  return <View style={{...styles.separator, color: theme.dividerColor}} />;
 };
 
 const styles = StyleSheet.create({

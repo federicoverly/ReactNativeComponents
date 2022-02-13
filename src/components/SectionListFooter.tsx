@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 interface Props {
   content: string;
 }
 export const SectionListFooter = ({content}: Props) => {
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
   return (
     <View style={styles.container}>
-      <Text style={styles.content}>{content}</Text>
+      <Text style={{...styles.content, color: colors.primary}}>{content}</Text>
     </View>
   );
 };

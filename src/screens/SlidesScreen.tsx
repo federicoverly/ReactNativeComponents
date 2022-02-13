@@ -1,5 +1,5 @@
 import {StackScreenProps} from '@react-navigation/stack';
-import React, {useRef, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -15,6 +15,7 @@ import {
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useAnimation} from '../hooks/useAnimation';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 const {width: screenWidth} = Dimensions.get('window');
 
@@ -47,6 +48,10 @@ interface Props extends StackScreenProps<any, any> {}
 export const SlidesScreen = ({navigation}: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
+
   const isVisible = useRef(false);
   const {opacity, fadeIn} = useAnimation();
   const renderItem = (item: Slide) => {
@@ -60,8 +65,12 @@ export const SlidesScreen = ({navigation}: Props) => {
             resizeMode: 'center',
           }}
         />
-        <Text style={screenStyles.title}>{item.title}</Text>
-        <Text style={screenStyles.description}>{item.desc}</Text>
+        <Text style={{...screenStyles.title, color: colors.primary}}>
+          {item.title}
+        </Text>
+        <Text style={{...screenStyles.description, color: colors.card}}>
+          {item.desc}
+        </Text>
       </View>
     );
   };
@@ -85,20 +94,30 @@ export const SlidesScreen = ({navigation}: Props) => {
         <Pagination
           dotsLength={items.length}
           activeDotIndex={activeIndex}
-          dotStyle={screenStyles.dotStyle}
+          dotStyle={{...screenStyles.dotStyle, backgroundColor: colors.primary}}
           //dotColor="red"
         />
         <Animated.View style={{opacity}}>
           <TouchableOpacity
-            style={screenStyles.button}
+            style={{...screenStyles.button, backgroundColor: colors.primary}}
             onPress={() => {
               if (isVisible.current) {
                 navigation.navigate('HomeScreen');
               }
             }}>
-            <Animated.Text style={screenStyles.buttonText}>Enter</Animated.Text>
+            <Animated.Text
+              style={{
+                ...screenStyles.buttonText,
+                color: colors.background,
+              }}>
+              Enter
+            </Animated.Text>
 
-            <Icon name="chevron-forward-outline" color={'white'} size={30} />
+            <Icon
+              name="chevron-forward-outline"
+              color={colors.background}
+              size={30}
+            />
           </TouchableOpacity>
         </Animated.View>
       </View>
@@ -140,11 +159,9 @@ const screenStyles = StyleSheet.create({
     heigth: 10,
     width: 10,
     borderRadius: 10,
-    backgroundColor: 'lightblue',
   },
   button: {
     flexDirection: 'row',
-    backgroundColor: 'lightblue',
     width: 140,
     height: 50,
     borderRadius: 10,

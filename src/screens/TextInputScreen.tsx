@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   StyleSheet,
   Text,
@@ -14,8 +14,12 @@ import {HeaderTitle} from '../components/HeaderTitle';
 import {styles} from '../theme/AppTheme';
 import {useForm} from '../hooks/useForms';
 import {CustomSwitch} from '../components/CustomSwitch';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 export const TextInputScreen = () => {
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
   const {form, onChange} = useForm({
     name: '',
     email: '',
@@ -31,7 +35,10 @@ export const TextInputScreen = () => {
           <View style={styles.globalMargin}>
             <HeaderTitle title={'Text Inputs'} />
             <TextInput
-              style={stylesScreen.textInputStyle}
+              style={{
+                ...stylesScreen.textInputStyle,
+                borderColor: colors.card,
+              }}
               placeholder="Name"
               value={form.name}
               autoCorrect={false}
@@ -39,7 +46,10 @@ export const TextInputScreen = () => {
               onChangeText={value => onChange(value, 'name')}
             />
             <TextInput
-              style={stylesScreen.textInputStyle}
+              style={{
+                ...stylesScreen.textInputStyle,
+                borderColor: colors.card,
+              }}
               placeholder="Surname"
               autoCapitalize="words"
               value={form.email}
@@ -48,14 +58,17 @@ export const TextInputScreen = () => {
               keyboardType="email-address"
             />
             <TextInput
-              style={stylesScreen.textInputStyle}
+              style={{
+                ...stylesScreen.textInputStyle,
+                borderColor: colors.card,
+              }}
               placeholder="Email"
               autoCapitalize="none"
               value={form.telephone}
               onChangeText={value => onChange(value, 'telephone')}
             />
             <View style={stylesScreen.switchRow}>
-              <Text style={stylesScreen.switchText}>
+              <Text style={{...stylesScreen.switchText, color: colors.primary}}>
                 Suscribed: {form.isSuscribed}{' '}
               </Text>
               <CustomSwitch
@@ -64,7 +77,7 @@ export const TextInputScreen = () => {
               />
             </View>
 
-            <Text style={stylesScreen.formText}>
+            <Text style={{...stylesScreen.formText, color: colors.primary}}>
               {JSON.stringify(form, null, 3)}
             </Text>
           </View>

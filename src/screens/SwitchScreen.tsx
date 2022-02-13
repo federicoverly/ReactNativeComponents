@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {CustomSwitch} from '../components/CustomSwitch';
 import {HeaderTitle} from '../components/HeaderTitle';
 import {styles} from '../theme/AppTheme';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 export const SwitchScreen = () => {
   const [state, setState] = useState({
@@ -16,31 +18,41 @@ export const SwitchScreen = () => {
     setState({...state, [field]: value});
   };
 
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
+
   return (
     <View style={styles.globalMargin}>
       <HeaderTitle title={'Switches'} />
       <View style={screenStyles.switchRow}>
-        <Text style={screenStyles.switchText}>Is active</Text>
+        <Text style={{...screenStyles.switchText, color: colors.primary}}>
+          Is active
+        </Text>
         <CustomSwitch
           isOn={isActive}
           onChange={value => onChange(value, 'isActive')}
         />
       </View>
       <View style={screenStyles.switchRow}>
-        <Text style={screenStyles.switchText}>Is Hungry</Text>
+        <Text style={{...screenStyles.switchText, color: colors.primary}}>
+          Is Hungry
+        </Text>
         <CustomSwitch
           isOn={isHungry}
           onChange={value => onChange(value, 'isHungry')}
         />
       </View>
       <View style={screenStyles.switchRow}>
-        <Text style={screenStyles.switchText}>Is Happy</Text>
+        <Text style={{...screenStyles.switchText, color: colors.primary}}>
+          Is Happy
+        </Text>
         <CustomSwitch
           isOn={isHappy}
           onChange={value => onChange(value, 'isHappy')}
         />
       </View>
-      <Text style={screenStyles.switchText}>
+      <Text style={{...screenStyles.switchText, color: colors.primary}}>
         {JSON.stringify(state, null, 5)}
       </Text>
     </View>
