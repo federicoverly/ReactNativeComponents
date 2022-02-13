@@ -36,7 +36,6 @@ export const PullToRefreshScreen = () => {
           style={{backgroundColor: colors.background}}
           tintColor={colors.background}
           title="Refreshing"
-          titleColor="white"
         />
       }>
       <View>

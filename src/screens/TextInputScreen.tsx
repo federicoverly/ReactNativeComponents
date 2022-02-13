@@ -38,8 +38,10 @@ export const TextInputScreen = () => {
               style={{
                 ...stylesScreen.textInputStyle,
                 borderColor: colors.card,
+                color: colors.text,
               }}
               placeholder="Name"
+              placeholderTextColor={colors.card}
               value={form.name}
               autoCorrect={false}
               autoCapitalize="words"
@@ -49,8 +51,10 @@ export const TextInputScreen = () => {
               style={{
                 ...stylesScreen.textInputStyle,
                 borderColor: colors.card,
+                color: colors.text,
               }}
               placeholder="Surname"
+              placeholderTextColor={colors.card}
               autoCapitalize="words"
               value={form.email}
               onChangeText={value => onChange(value, 'email')}
@@ -61,8 +65,10 @@ export const TextInputScreen = () => {
               style={{
                 ...stylesScreen.textInputStyle,
                 borderColor: colors.card,
+                color: colors.text,
               }}
               placeholder="Email"
+              placeholderTextColor={colors.card}
               autoCapitalize="none"
               value={form.telephone}
               onChangeText={value => onChange(value, 'telephone')}
